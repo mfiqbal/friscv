@@ -1,0 +1,14 @@
+/home/users/faisaliqbal/work/verilog/projects/farm/rtl/alu.v
+/home/users/faisaliqbal/work/verilog/projects/farm/rtl/compute.v
+/home/users/faisaliqbal/work/verilog/projects/farm/rtl/control_gen.sv
+/home/users/faisaliqbal/work/verilog/projects/farm/rtl/decode.v
+/home/users/faisaliqbal/work/verilog/projects/farm/rtl/farm_pkg.sv
+/home/users/faisaliqbal/work/verilog/projects/farm/rtl/farm_top.v
+/home/users/faisaliqbal/work/verilog/projects/farm/rtl/ins_ad_gen.v
+/home/users/faisaliqbal/work/verilog/projects/farm/rtl/ins_fetch.v
+/home/users/faisaliqbal/work/verilog/projects/farm/rtl/memAccess.sv
+/home/users/faisaliqbal/work/verilog/projects/farm/rtl/muxMto1.v
+/home/users/faisaliqbal/work/verilog/projects/farm/rtl/pmi.sv
+/home/users/faisaliqbal/work/verilog/projects/farm/rtl/ram.v
+/home/users/faisaliqbal/work/verilog/projects/farm/rtl/regFile.v
+/home/users/faisaliqbal/work/verilog/projects/farm/tb/farm_tb.v

@@ -1,0 +1,19 @@
+ -sverilog
+ -full64
+ -debug_all
+-cm line+cond+fsm+tgl+path+assert
+-timescale=1ns/1ps
+../rtl/farm_pkg.sv
+../rtl/ram.v
+../rtl/muxMto1.v
+../rtl/regFile.v
+../rtl/control_gen.sv
+../rtl/pmi.sv
+../rtl/ins_ad_gen.v
+../rtl/ins_fetch.v
+../rtl/decode.v
+../rtl/alu.v
+../rtl/compute.v
+../rtl/memAccess.sv
+../rtl/farm_top.v
+../tb/farm_tb.v         

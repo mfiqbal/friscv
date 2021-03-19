@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE cov SYSTEM "ucdb_srcinfo.dtd">
+  <srcinfo name="/home/users/faisaliqbal/work/verilog/projects/farm/sim"  >
+    <ucapi_version  major_ver="13"  minor_ver="1"  patch_str="O-2018.09-SP2-4"  />
+      <fileinfo name="../rtl/farm_pkg.sv"  id="0"  />
+      <fileinfo name="../rtl/ram.v"  id="1"  />
+      <fileinfo name="../rtl/muxMto1.v"  id="2"  />
+      <fileinfo name="../rtl/regFile.v"  id="3"  />
+      <fileinfo name="../rtl/control_gen.sv"  id="4"  />
+      <fileinfo name="../rtl/pmi.sv"  id="5"  />
+      <fileinfo name="../rtl/ins_ad_gen.v"  id="6"  />
+      <fileinfo name="../rtl/ins_fetch.v"  id="7"  />
+      <fileinfo name="../rtl/decode.v"  id="8"  />
+      <fileinfo name="../rtl/alu.v"  id="9"  />
+      <fileinfo name="../rtl/compute.v"  id="10"  />
+      <fileinfo name="../rtl/memAccess.sv"  id="11"  />
+      <fileinfo name="../rtl/farm_top.v"  id="12"  />
+      <fileinfo name="../tb/farm_tb.v"  id="13"  />
+    </srcinfo>
