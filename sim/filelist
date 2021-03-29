@@ -1,1 +1,17 @@
-#testing the file list
+ -sverilog
+-cm line+cond+fsm+tgl+path+assert
+-timescale=1ns/1ps
+../rtl/farm_pkg.sv
+../rtl/pmi.sv
+../rtl/muxMto1.v
+../rtl/ram.v
+../rtl/regFile.v
+../rtl/ins_ad_gen.v
+../rtl/ins_fetch.v
+../rtl/alu.v
+../rtl/control_gen.sv
+../rtl/decode.v
+../rtl/compute.v
+../rtl/memAccess.sv
+../rtl/farm_top.v
+../tb/farm_tb.v

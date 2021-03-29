@@ -32,7 +32,7 @@ wire [31:0] imem_ad;
  endtask: reset_alu
 
  task init_imem();
-	 $readmemh("program.hex", DUT.farm_pmi.imem.mem);
+	 $readmemh("../tb/hex/program.hex", DUT.farm_pmi.imem.mem);
 	 //DUT.imem.dump(0,7);
  endtask
 

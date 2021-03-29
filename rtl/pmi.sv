@@ -13,8 +13,8 @@ module pmi(
 // address map
 // Instruction       : 0x0000_0000 to 0x0000_FFFF
 // Memory Mapped CSRS: 0x0001_0000 to 0x0001_FFFF
-// Reserved          : 0x0002_0000 to 0x0FFF_FFFF
-// RAM, ROM, MMIO    : 0x1000_0000 to 0xDFFF_FFFF
+// Reserved          : 0x0002_0000 to 0x0002_FFFF
+// RAM, ROM, MMIO    : 0x0003_0000 to 0xDFFF_FFFF
 
 //------------------------------------------------
 // defining an instruction memory 
@@ -26,30 +26,25 @@ module pmi(
 
 
 
-logic [2:0 ] state;
-localparam idle = 3'b000;
-localparam imem_rd = 3'b001;
 logic ins_rd;
+logic data_access;
+
 assign ins_rd = (mem_rd && address <= 32'h0000ffff)? 1'b1:1'b0;
-assign #(`cd) mfc = ins_rd;
-/*always_ff @(posedge clk) begin
-	if (rst_n == 0) state <= idle;
-	else begin
-		case (state)
-			idle   : if (mem_rd && address <= 32'h0000ffff) state <= #(`cq) imem_rd;
-			imem_rd: state <= #(`cq) idle;
-		default: state <= #(`cq) idle;
+assign data_access = (mem_rd || mem_wr) && (address >= 32'h00030000);
+
+assign #(`cd) mfc = ins_rd || (data_access); 
+/*
+always_comb begin
+	case({ins_rd, data_access})
+		2'b10: #(`cd) mfc = ins_rd;
+		2'b01: #(`cd) mfc = data_access;
+		default: mfc = 0;
 	endcase
 end
-  end
-  //output logic
-  always_comb begin
-	  if (state == imem_rd) mfc = 1; else mfc = 0;
-  end
   */
-  ram #(32, 16, 2, 2) imem(
+ram #(32, 26, 2, 2) imem(
 	  .data(data),
-	  .address(address[17:2]),
+	  .address(address[27:2]),
 	  .read(ins_rd),
 	  .write(1'b0)
   ); 
