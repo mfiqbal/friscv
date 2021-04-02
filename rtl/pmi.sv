@@ -1,7 +1,7 @@
 module pmi(
 	input logic clk,
 	input logic rst_n,
-	input logic [31:0] in_data,
+	input logic [31:0] data_in,
 	input logic [31:0] address,
 	input logic mem_rd,
 	input logic mem_wr,
@@ -33,22 +33,21 @@ assign ins_rd = (mem_rd && address <= 32'h0000ffff)? 1'b1:1'b0;
 assign data_access = (mem_rd || mem_wr) && (address >= 32'h00030000);
 
 assign #(`cd) mfc = ins_rd || (data_access); 
-/*
-always_comb begin
-	case({ins_rd, data_access})
-		2'b10: #(`cd) mfc = ins_rd;
-		2'b01: #(`cd) mfc = data_access;
-		default: mfc = 0;
-	endcase
-end
-  */
-ram #(32, 26, 2, 2) imem(
+
+/*ram #(32, 26, 2, 2) imem(
 	  .data(data),
 	  .address(address[27:2]),
 	  .read(ins_rd),
 	  .write(1'b0)
   ); 
 
-
+ */
+ram_byte_addr fmem(
+	.data_in(data_in),
+	.address(address),
+	.read(mem_rd),
+	.write(mem_wr),
+	.data_out(data)
+);
   endmodule
 

@@ -5,6 +5,7 @@
 ../rtl/pmi.sv
 ../rtl/muxMto1.v
 ../rtl/ram.v
+../rtl/ram_byte_addr.sv
 ../rtl/regFile.v
 ../rtl/ins_ad_gen.v
 ../rtl/ins_fetch.v

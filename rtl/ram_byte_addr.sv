@@ -21,12 +21,12 @@
 */
  wire [31:0] adr = address & (MEM_SZ-1);
 
- wire [31:0] data_out = { mem[{adr[31:2],2'd3}],
+ assign data_out = { mem[{adr[31:2],2'd3}],
 	                      mem[{adr[31:2],2'd2}],
 						  mem[{adr[31:2],2'd1}],
 						  mem[{adr[31:2],2'd0}]};
  
- always_comb
+ always @ *
 	 if (write)begin
 	    mem[{adr[31:2],2'd3}] = data_in[31:24];
 	    mem[{adr[31:2],2'd2}] = data_in[23:16];

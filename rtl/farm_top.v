@@ -45,7 +45,7 @@ assign mem_ad = MA_sel ? imem_ad : rz;
 pmi farm_pmi(
 	 .clk(clk),
 	 .rst_n(rst_n),
-	 .in_data(rm),
+	 .data_in(rm),
 	 .address(mem_ad),
 	 .mem_rd(Mem_rd),
 	 .mem_wr(Mem_wr),
