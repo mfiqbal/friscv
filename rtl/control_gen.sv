@@ -13,13 +13,14 @@
     ALU_op,
     Y_sel,
     Mem_rd,
-    Mem_wr);
+    Mem_wr,
+    MA_sel);
 
 input logic clk, rst_n,mfc;
 input logic [31:0] ins;
 output logic [31:0] imm;
 output logic [4:0] ALU_op;
-output logic PC_sel, PC_en, INC_sel, IR_en, RF_wr, B_sel, Mem_rd, Mem_wr;
+output logic PC_sel, PC_en, INC_sel, IR_en, RF_wr, B_sel, Mem_rd, Mem_wr, MA_sel;
 output logic [1:0] Y_sel;
  
 logic wmfc;
@@ -131,6 +132,8 @@ always_comb begin
 	if (state == `MEM && Ins_t==S) Mem_wr = 1; else Mem_wr = 0;
     // wmfc
     if (state == `FETCH || (state == `MEM && Ins_t == L) || (state == `MEM && Ins_t == S)) wmfc = 1; else wmfc = 0;
+	//MA_sel : selects whether the address sent to memory comes from PC or RX
+    if (state == `MEM && (Ins_t ==L || Ins_t == S)) MA_sel = 0; else MA_sel = 1;
 //
 end
 

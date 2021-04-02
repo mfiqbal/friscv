@@ -12,17 +12,19 @@
 
  //internal storage
  reg[width-1:0] mem [0: (1<<abits) -1];
-
+ 
  /* simple behavior of a static RAM
     write occurs when write is 1.
 	To act more like a ralistic SRAM, if data changes while write is asserted
 	the data in memory is changed
 */
+ 
  always @(write or data)
 	 if (write)
 		 #twdh mem[address] = data;
 
- assign #trd data = read ? mem[address] : 'bz;
+ assign #(trd) data = read ? mem[address] : 'bz;
+ 
 
  /*convenience task for displaying the contents of the memory
  * during interactive debug.

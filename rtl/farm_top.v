@@ -13,6 +13,9 @@ logic [31:0] ra, rb; //output of decode
 logic [31:0] rz, rm; //output of compute
 logic [31:0] ry;     //output of memAccess
 logic [1:0] y_sel;
+wire [31:0] mem_ad;
+wire MA_sel;
+
 //------------------------------------------------------------
 // Instruction Fetch
 // Output: Instruction to be executed
@@ -38,13 +41,14 @@ ins_fetch farm_fetch(
 // A simple interface to talk to the memory (cache, SRAM)
 // asserts mfc for one cycle after memory operation is complete
 //-------------------------------------------------------------
- pmi farm_pmi(
+assign mem_ad = MA_sel ? imem_ad : rz;  
+pmi farm_pmi(
 	 .clk(clk),
 	 .rst_n(rst_n),
 	 .in_data(rm),
-	 .address(imem_ad),
+	 .address(mem_ad),
 	 .mem_rd(Mem_rd),
-	 .mem_wr(1'b0),
+	 .mem_wr(Mem_wr),
 	 .data(imem_data),
 	 .mfc(mfc));     
 
@@ -80,7 +84,8 @@ ins_fetch farm_fetch(
  .ALU_op(ALU_op),
  .Y_sel(y_sel),
  .Mem_rd(Mem_rd),
- .Mem_wr(Mem_wr)
+ .Mem_wr(Mem_wr),
+ .MA_sel(MA_sel)
  );
 
  //---------------------------------

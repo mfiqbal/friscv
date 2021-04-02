@@ -52,7 +52,7 @@ wire [31:0] imem_ad;
 	 // This should be the output ret_ad at the second clock edge
 	 
 
-	 #550 DUT.farm_dec.RF.dump(0,10); 
+	 #650 DUT.farm_dec.RF.dump(0,10); 
 	 
 	 $finish;
  end: tester
